@@ -14,9 +14,10 @@ class Voter {
         int voterStation;
 
     public:
-        voter(string name, int uwfID, string alternateID);
-        bool setVoterID(string id);
-        bool setVoterStation(int station);
+        Voter();
+        Voter(string name, int uwfID, string alternateID);
+        void setVoterID(string id);
+        void setVoterStation(int station);
 }
 
 #endif
