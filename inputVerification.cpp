@@ -1,4 +1,3 @@
-#include <iostream>
 #include "inputVerification.hpp"
 
 using namespace std;

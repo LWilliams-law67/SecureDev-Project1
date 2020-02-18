@@ -1,5 +1,4 @@
 #include "voter.hpp"
-#include <iostream>
 
 using namespace std;
 
