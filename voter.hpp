@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -8,16 +9,21 @@ using namespace std;
 class Voter {
     private:
         string name;
-        int uwfID;
+        unsigned int uwfID;
         string alternateID;
         string voterID;
         int voterStation;
 
     public:
         Voter();
-        Voter(string name, int uwfID, string alternateID);
+        Voter(string name, unsigned int uwfID, string alternateID);
         void setVoterID(string id);
         void setVoterStation(int station);
-}
+        string getVoterName();
+        unsigned int getVoterUwfID();
+        string getVoterAlternate();
+        string getVoterID();
+        int getVoterStation();
+};
 
 #endif

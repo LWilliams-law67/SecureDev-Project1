@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
@@ -7,9 +8,9 @@ using namespace std;
 
 class VerifyInput {
     public:
-        bool validUsernameCheck(string username);
-        bool validUWFid(unsigned id);
+        bool validNameCheck(string username);
+        bool validUWFid(unsigned int id);
         bool validAlternateID(string alternateID);
-}
+};
 
 #endif

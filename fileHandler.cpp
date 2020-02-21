@@ -2,22 +2,42 @@
 
 FileHandler::FileHandler(string fileName)
 {
-    this.fileName = fileName;
+    this->fileName = fileName;
+    openFile();
 }
 
-FileHandler::openFile()
+void FileHandler::openFile()
 {
-    file.open(fileName);
+    try {
+        file.open(fileName);
+        if(!file)
+        {
+            file.open("output.dat",std::fstream::binary | std::fstream::trunc | std::fstream::out);    
+            file.close();
+            // re-open with original flags
+            file.open("output.dat",std::fstream::binary | std::fstream::in | std::fstream::out);
+        }
+    } catch(exception err) {
+        cout << "An error occured opening the file." << endl;
+    }
 }
 
-FileHandler::closeFile()
+void FileHandler::closeFile()
 {
-    file.close(fileName);
+    try {
+        file.close();
+    } catch (exception err) {
+        cout << "An error occured closing the file." << endl;
+    }
 }
 
-FileHandler::writeFile(Vector voters)
+void FileHandler::writeFile(vector<Voter> *voters)
 {
     //Cycle through vector
+    for(unsigned int i = 0; i < voters->size(); i++) {
+        file << (*voters)[i].getVoterName() << " " << (*voters)[i].getVoterID() << " " << (*voters)[i].getVoterAlternate() << " ";
+        file << (*voters)[i].getVoterID() << " " << (*voters)[i].getVoterStation() << endl;
+    }
     
     //Stringify Voter.
 
@@ -25,7 +45,7 @@ FileHandler::writeFile(Vector voters)
 
 }
 
-FileHandler::readFile(Vector voters)
+void FileHandler::readFile(vector<Voter> *voters)
 {
     //while !eof
         //parse name (string) delimiter ',' or ' '
@@ -33,5 +53,18 @@ FileHandler::readFile(Vector voters)
         //parse alternate ID (string) delimiter ',' or '\n'
         //create Voter
         //populate Voter to vector
+    string name;
+    unsigned int uwfID;
+    string alternateID;
 
+    while (!file.eof()) {
+        
+        file >> name;
+        if(file.eof())
+            break;
+        file >> uwfID;
+        file >> alternateID;
+
+        voters->push_back(Voter(name, uwfID, alternateID));
+    }
 }

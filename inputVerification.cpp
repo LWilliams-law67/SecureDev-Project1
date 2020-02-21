@@ -2,14 +2,17 @@
 
 using namespace std;
 
-bool VerifyInput::validUsernameCheck(string name)
+bool VerifyInput::validNameCheck(string name)
 {
     // Booleans to hold the values of the verification of names.
     bool validCharacters = false;
     bool validLength = false;
+    int nameLength = name.length();
+    char nameArray[nameLength + 1];
 
+    strcpy(nameArray, name.c_str());
     // Checks the individual characters within the name string for only letters and underscores.
-    if (name[strspn(name, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_")] == 0)
+    if (nameArray[strspn(nameArray, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_")] == 0)
         validCharacters = true;
 
     // Checks the length/size of the string to verify that it does not reach 500 characters or more.
@@ -25,7 +28,7 @@ bool VerifyInput::validUsernameCheck(string name)
 
 }
 
-bool VerifyInput::validUWFid(unsigned id)
+bool VerifyInput::validUWFid(unsigned int id)
 {
     // Boolean to hold the value of whether the id is not less than zero.
     bool isNotLessThanZero = false;
@@ -43,13 +46,17 @@ bool VerifyInput::validAlternateID(string alternateID)
     // Booleans to hold the values of the verification of alternateID.
     bool validCharacters = false;
     bool validLength = false;
+    int alternateIDlength = alternateID.length();
+    char alternateIDarray[ alternateIDlength + 1 ];
+
+    strcpy(alternateIDarray, alternateID.c_str());
 
     // Checks the individual characters within the alternateID string for only letters, numbers, and underscores.
-    if (name[strspn(name, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_")] == 0)
+    if (alternateIDarray[strspn(alternateIDarray, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_")] == 0)
         validCharacters = true;
 
     // Checks the length/size of the string to verify that it does not reach 500 characters or more.
-    if(name.size() < 500)
+    if(alternateID.size() < 500)
         validLength = true;
 
     // Function returns true if both the above validations pass.

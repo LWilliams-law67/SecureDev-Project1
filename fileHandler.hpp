@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <string>
+#include "voter.hpp"
 
 using namespace std;
 
@@ -16,8 +18,8 @@ class FileHandler {
         FileHandler(string fileName);
         void openFile();
         void closeFile();
-        void writeFile(Vector voters);
-        void readFile(Vector voters);
-}
+        void writeFile(vector<Voter> *voters);
+        void readFile(vector<Voter> *voters);
+};
 
 #endif
